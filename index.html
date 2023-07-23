@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&display=swap" rel="stylesheet">
-
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -55,6 +55,38 @@
     </div>
 
 
+    <div class="cls-edit" id="cls-edit">
+        <div class="cls-edit-data">
+            <table style="padding: 20px;">
+                <tr>
+                    <td>Name: <input type="text" id="e-name" placeholder="Update Name" required></td>
+                </tr>
+                <tr>
+
+                    <td>Designation: <input type="text" id="e-desg" placeholder="Update Designation" required></td>
+                </tr>
+                <tr>
+                    <td>Salary: <input type="number" id="e-sal" placeholder="Update Salary" required min="0"></td>
+                </tr>
+                <tr>
+                    <td>City: <input type="text" id="e-city" placeholder="Update City" required></td>
+                </tr>
+
+                <tr>
+                    <td class="header-btn">
+                        <a onclick="update()">Update</a>
+                    </td>
+                    <td class="header-btn">
+                        <a onclick="ex()">close</a>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+    
+
+    <div id="temp-cls">
     <div class="display-cls" id="display-cls">
         <div class="cls-clm" id="cls-main">
             <div><a>Emp.No</a></div>
@@ -66,65 +98,7 @@
         </div>
 
     </div>
-
-    <script>
-
-        var main_arr = new Array();
-        let i = 0;
-        function add() {
-            document.getElementById("cls-add").style.display = "block";
-        }
-
-        function ex() {
-            document.getElementById("cls-add").style.display = "none";
-        }
-
-        function create() {
-            let name = document.getElementById("name").value;
-            let des = document.getElementById("desg").value;
-            let sal = document.getElementById("sal").value;
-            let city = document.getElementById("city").value;
-            var arr = new Array(i++, name, des, sal, city);
-            main_arr.push(arr);
-            document.getElementById("cls-add").style.display = "none";
-            ref();
-        }
-
-
-        function ref() {
-            let ele = document.getElementById("display-cls");
-            ele.innerHTML = "";
-            ele.innerHTML = `
-            <div class="display-cls" id="display-cls">
-        <div class="cls-clm" id="cls-main">
-            <div><a>Emp.No</a></div>
-            <div><a>Name</a></div>
-            <div><a>Designation</a></div>
-            <div><a>Salary</a></div>
-            <div><a>City</a></div>
-            <div><a>Actions</a></div>
-        </div>
-
     </div>
-            `;
-            main_arr.forEach(e => {
-                ele.innerHTML+=`
-                <div class="cls-clm" id="temp">
-                    <div><a>${e[0]}</a></div>
-                    <div><a>${e[1]}</a></div>
-                    <div><a>${e[2]}</a></div>
-                    <div><a>${e[3]}</a></div>
-                    <div><a>${e[4]}</a></div>
-                    <div class="header-btn"><a>Edit</a><a>Delete</a></div>
-                </div>
-            `;
-            });
-            //alert("All data are cleared");
-        }
-
-
-    </script>
-
 </body>
 
 </html>
